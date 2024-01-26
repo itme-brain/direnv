@@ -3,7 +3,6 @@ package cmd
 import (
 	"fmt"
 	"strings"
-	"time"
 )
 
 type actionSimple func(env Env, args []string) error
@@ -82,8 +81,8 @@ func cmdWithWarnTimeout(fn action) action {
 			select {
 			case <-done:
 				return
-			case <-time.After(config.WarnTimeout):
-				logError("(%v) is taking a while to execute. Use CTRL-C to give up.", args)
+		//	case <-time.After(config.WarnTimeout):
+		//		logError("(%v) is taking a while to execute. Use CTRL-C to give up.", args)
 			}
 		}()
 
